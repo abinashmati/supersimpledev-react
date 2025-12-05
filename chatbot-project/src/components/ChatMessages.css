@@ -1,0 +1,9 @@
+.chat-messages-container {
+  flex-grow: 1;
+  /* making it grow and take left over spaces and we can add it when this elements parent continer has disply :flex */
+  margin-top: 20px;
+  overflow: scroll;
+  /* when there are too many chat messages to be displayed then for overflow we will add scroll so that we can have a scroll rather than pusinh the chat-input-container down  */
+  scrollbar-width: none;
+  /* set the scrollbar width to none so that the scroll bar will not appear. when message conatiner overflows but we can scroll using mouse wheel or keywown button */
+}

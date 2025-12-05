@@ -1,0 +1,38 @@
+.send-button {
+    background-color: rgb(25, 135, 84);
+    color: white;
+    padding: 12px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.chat-input {
+    padding: 12px 15px;
+    border-width: 1px;
+    border-radius: 10px;
+    font-size: 15px;
+
+    text-align: center;
+    /* just align the text in center inside the input box */
+
+    flex-grow: 1;
+    /* make an element grow should take the remaining spaces first we have create contriner around it then display flex to that container and then use the flex-grow for the element that you want to take all the sapces and this element should be presnt inside the flex container*/
+}
+
+.chat-input-container {
+    display: flex;
+    margin-bottom: 60px;
+}
+.clear-button{
+    background-color: rgb(195, 204, 200);
+        color: white;
+        padding: 12px 20px;
+        margin-left: 10px;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+}

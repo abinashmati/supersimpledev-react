@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+      .app-container {
+        display: flex;
+        justify-content: end;
+      }
+      .btn-on {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 20px;
+        margin-right: 30px;
+        cursor: pointer;
+      }
+      .btn-off {
+        background-color: rgb(220, 53, 69);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 20px;
+        margin-right: 30px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App() {
+        const [isBtnOn, setIsBtnOn] = React.useState(true);
+
+        function toggleButton() {
+          if (isBtnOn) {
+            setIsBtnOn(false);
+          } else {
+            setIsBtnOn(true);
+          }
+        }
+
+        return (
+          <div className="app-container">
+            <button
+              className={isBtnOn ? "btn-on" : "btn-off"}
+              onClick={toggleButton}
+            >
+              {isBtnOn ? "On" : "Off"}
+            </button>
+          </div>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

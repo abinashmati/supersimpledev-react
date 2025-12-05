@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function Counter({ count, setCount }) {
+        // const [count, setCount] = React.useState(0);
+        //then both button counter will be incremented independently as we have to states for each component
+
+        function onIncreaseCount(event) {
+          setCount(count + 1);
+        }
+
+        return (
+          <>
+            <button onClick={onIncreaseCount}>
+              Cliked {count} {count === 1 ? "time" : "times"}
+            </button>
+          </>
+        );
+      }
+
+      function App() {
+        const [count, setCount] = React.useState(0);
+
+        function onResetCount() {
+          setCount(0);
+        }
+        return (
+          <>
+            <Counter count={count} setCount={setCount} />
+            <Counter count={count} setCount={setCount} />
+            <button onClick={onResetCount}>Reset </button>
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

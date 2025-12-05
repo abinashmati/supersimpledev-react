@@ -1,0 +1,24 @@
+body {
+  font-family: Arial;
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.app-conatiner {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 100vh;
+  /* vew port height : height of the browser that is visible , 100% of the height of the browser. */
+
+  display: flex;
+  flex-direction: column;
+  /* it is used to determine the direction of the elements are positioned flex-direction is row by default. */
+}
+
+.loading-image {
+  height: 40px;
+  margin: -10px;
+}

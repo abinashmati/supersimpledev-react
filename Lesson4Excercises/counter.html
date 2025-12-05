@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+      body {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      .app-container {
+        display: flex;
+        justify-content: center;
+        /* align items at center horizntally */
+        height: 100vh;
+        background-color: rgb(222, 222, 222);
+
+        align-items: center;
+        /* align items at centre vertically. To do it before we have to set the height of the flex box to 100VH means take the full vertical height of browser. You have to make the app-container big so that you can vertically center items that are inside of it */
+      }
+      .btn {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App() {
+        const [count, setCount] = React.useState(0);
+        const buttonElem = React.useRef(null);
+
+        function onResetCount() {
+          setCount(0);
+        }
+        function onIncreaseCounter() {
+          setCount(count + 1);
+        }
+
+        function onAutoClick() {
+          setInterval(() => {
+            buttonElem.current.click();
+          }, 1000);
+        }
+
+        //another way
+        // function onAutoClick() {
+        //   setInterval(() => {
+        //     setCount((prevcount) => prevcount + 1);  // beacuse react does not update state as soon as you update it will update on reload
+        //   }, 1000);
+        // }
+        return (
+          <div className="app-container">
+            <button
+              ref={buttonElem}
+              onClick={onIncreaseCounter}
+              className="btn"
+            >
+              Clicked {count} {count === 1 ? "time" : "times"}
+            </button>
+            <button onClick={onResetCount} className="btn">
+              Reset{" "}
+            </button>
+            <button onClick={onAutoClick} className="btn">
+              Auto Click
+            </button>
+          </div>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
