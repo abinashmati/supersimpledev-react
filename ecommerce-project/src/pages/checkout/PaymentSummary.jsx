@@ -1,6 +1,17 @@
+import axios from "axios";
+import { useNavigate } from "react-router";
 import { formatMoney } from "../../utils/money";
 
-export function PaymentSummary({ paymentSummary }) {
+export function PaymentSummary({ paymentSummary, loadCart }) {
+  const navigate = useNavigate();
+
+  const createOrder = async () => {
+    await axios.post("/api/orders");
+
+    await loadCart(); //once the order is craeted from cart that cart page will be emptied so we have to reload the cart so that the cart page will have no items as they are moved to orders.
+    navigate("/orders"); //navigate to orders page after order is craeted
+  };
+
   return (
     <div className="payment-summary">
       <div className="payment-summary-title">Payment Summary</div>
@@ -37,7 +48,10 @@ export function PaymentSummary({ paymentSummary }) {
               {formatMoney(paymentSummary.totalCostCents)}
             </div>
           </div>
-          <button className="place-order-button button-primary">
+          <button
+            className="place-order-button button-primary"
+            onClick={createOrder}
+          >
             Place your order
           </button>
         </>
