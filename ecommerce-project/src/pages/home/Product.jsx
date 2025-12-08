@@ -12,7 +12,7 @@ export function Product({ product, loadCart }) {
       quantity: quantity,
     });
 
-    await loadCart();
+    await loadCart(); //reload the cart data with the new saved quantity
   };
 
   const selectQuantity = (event) => {
