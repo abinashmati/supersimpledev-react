@@ -16,7 +16,7 @@ export function OrderDetailsGrid({ order }) {
             <div className="product-details">
               <div className="product-name">{orderProduct.product.name}</div>
               <div className="product-delivery-date">
-                Arriving on:{" "}
+                Arriving on:
                 {dayjs(orderProduct.estimatedDeliveryTimeMs).format("MMMM D")}
               </div>
               <div className="product-quantity">
@@ -29,7 +29,7 @@ export function OrderDetailsGrid({ order }) {
             </div>
 
             <div className="product-actions">
-              <NavLink to="/tracking">
+              <NavLink to={`/tracking/${order.id}/${orderProduct.product.id}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>

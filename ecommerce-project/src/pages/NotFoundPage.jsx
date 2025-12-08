@@ -1,16 +1,18 @@
 import { Header } from "../components/Header";
+import pagenotFound from "../assets/images/pagenotfound.png";
 
 import "./NotFoundPage.css";
 
-export function NotFoundPage() {
+export function NotFoundPage({ cart }) {
   return (
     <>
-      {/* You can choose whatever title and favicon you want. */}
       <title>404 Page Not Found</title>
       <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
 
-      <Header></Header>
-      <div className="not-found-message">Page not found</div>
+      <Header cart={cart}></Header>
+      <div className="not-found-message">
+        <img src={pagenotFound}></img>
+      </div>
     </>
   );
 }
