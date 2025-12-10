@@ -1,4 +1,4 @@
-import { it, expect, describe, vi } from "vitest";
+import { it, expect, describe, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Product } from "./Product";
@@ -7,8 +7,12 @@ import axios from "axios";
 vi.mock("axios");
 
 describe("Product Component", () => {
-  it("displays the product details correctly", () => {
-    const product = {
+  let product;
+  let loadCart;
+
+  //we will run some code to intialize fresh data for the common varibale before each test run
+  beforeEach(() => {
+    product = {
       id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
       image: "images/products/athletic-cotton-socks-6-pairs.jpg",
       name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -21,8 +25,10 @@ describe("Product Component", () => {
     };
 
     //create a fake fucntion taht is called a mock so that we dont contact the database
-    const loadCart = vi.fn();
+    loadCart = vi.fn();
+  });
 
+  it("displays the product details correctly", () => {
     //we have to render the component in the fake web page
     render(<Product product={product} loadCart={loadCart} />);
 
@@ -50,19 +56,6 @@ describe("Product Component", () => {
 
   //Test user interaction by button click
   it("add a product to the cart", async () => {
-    const product = {
-      id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-      image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-      name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-      rating: {
-        stars: 4.5,
-        count: 87,
-      },
-      priceCents: 1090,
-      keywords: ["socks", "sports", "apparel"],
-    };
-    const loadCart = vi.fn();
-
     render(<Product product={product} loadCart={loadCart} />);
 
     //setup user event now we can simulate a click event and in the click fucntion we will let it know which element to click.
